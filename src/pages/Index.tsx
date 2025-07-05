@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -240,48 +239,40 @@ const Index = () => {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <Card className="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-blue-100">Total Tasks</p>
-                  <p className="text-3xl font-bold">{stats.total}</p>
-                </div>
+        {/* Stats Cards - Horizontal Layout */}
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <Card className="bg-gradient-to-r from-blue-500 to-blue-600 text-white flex-1 min-w-[200px] max-w-[250px]">
+            <CardContent className="p-4">
+              <div className="text-center">
+                <p className="text-blue-100 text-sm">Total Tasks</p>
+                <p className="text-2xl font-bold">{stats.total}</p>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="bg-gradient-to-r from-green-500 to-green-600 text-white">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-green-100">Completed</p>
-                  <p className="text-3xl font-bold">{stats.completed}</p>
-                </div>
+          <Card className="bg-gradient-to-r from-green-500 to-green-600 text-white flex-1 min-w-[200px] max-w-[250px]">
+            <CardContent className="p-4">
+              <div className="text-center">
+                <p className="text-green-100 text-sm">Completed</p>
+                <p className="text-2xl font-bold">{stats.completed}</p>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-yellow-100">In Progress</p>
-                  <p className="text-3xl font-bold">{stats.inProgress}</p>
-                </div>
+          <Card className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white flex-1 min-w-[200px] max-w-[250px]">
+            <CardContent className="p-4">
+              <div className="text-center">
+                <p className="text-yellow-100 text-sm">In Progress</p>
+                <p className="text-2xl font-bold">{stats.inProgress}</p>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="bg-gradient-to-r from-red-500 to-red-600 text-white">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-red-100">Overdue</p>
-                  <p className="text-3xl font-bold">{stats.overdue}</p>
-                </div>
+          <Card className="bg-gradient-to-r from-red-500 to-red-600 text-white flex-1 min-w-[200px] max-w-[250px]">
+            <CardContent className="p-4">
+              <div className="text-center">
+                <p className="text-red-100 text-sm">Overdue</p>
+                <p className="text-2xl font-bold">{stats.overdue}</p>
               </div>
             </CardContent>
           </Card>
