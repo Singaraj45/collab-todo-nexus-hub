@@ -55,14 +55,14 @@ const TaskFilters = ({ filters, onFiltersChange }: TaskFiltersProps) => {
   const activeFilterCount = getActiveFilterCount();
 
   return (
-    <Card className="sticky top-4">
+    <Card className="sticky top-4 bg-card/95 backdrop-blur-sm border-border/50">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg flex items-center space-x-2">
-            <Filter className="h-5 w-5" />
+            <Filter className="h-5 w-5 text-red-600" />
             <span>Filters</span>
             {activeFilterCount > 0 && (
-              <Badge variant="secondary" className="ml-2">
+              <Badge variant="secondary" className="ml-2 bg-red-600 text-white">
                 {activeFilterCount}
               </Badge>
             )}
@@ -71,7 +71,7 @@ const TaskFilters = ({ filters, onFiltersChange }: TaskFiltersProps) => {
             variant="ghost" 
             size="sm"
             onClick={() => setIsExpanded(!isExpanded)}
-            className="lg:hidden"
+            className="lg:hidden hover:bg-muted"
           >
             {isExpanded ? <X className="h-4 w-4" /> : <Filter className="h-4 w-4" />}
           </Button>
@@ -81,26 +81,26 @@ const TaskFilters = ({ filters, onFiltersChange }: TaskFiltersProps) => {
       <CardContent className={`space-y-4 ${isExpanded ? 'block' : 'hidden lg:block'}`}>
         {/* Search */}
         <div className="space-y-2">
-          <Label className="text-sm font-medium">Search Tasks</Label>
+          <Label className="text-sm font-medium text-foreground">Search Tasks</Label>
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               placeholder="Search by title or description..."
               value={filters.search}
               onChange={(e) => updateFilter('search', e.target.value)}
-              className="pl-10"
+              className="pl-10 bg-input border-border text-foreground"
             />
           </div>
         </div>
 
         {/* Status Filter */}
         <div className="space-y-2">
-          <Label className="text-sm font-medium">Status</Label>
+          <Label className="text-sm font-medium text-foreground">Status</Label>
           <Select value={filters.status} onValueChange={(value) => updateFilter('status', value)}>
-            <SelectTrigger>
+            <SelectTrigger className="bg-input border-border text-foreground">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-popover border-border">
               <SelectItem value="all">All Status</SelectItem>
               <SelectItem value="todo">Todo</SelectItem>
               <SelectItem value="in-progress">In Progress</SelectItem>
@@ -111,12 +111,12 @@ const TaskFilters = ({ filters, onFiltersChange }: TaskFiltersProps) => {
 
         {/* Priority Filter */}
         <div className="space-y-2">
-          <Label className="text-sm font-medium">Priority</Label>
+          <Label className="text-sm font-medium text-foreground">Priority</Label>
           <Select value={filters.priority} onValueChange={(value) => updateFilter('priority', value)}>
-            <SelectTrigger>
+            <SelectTrigger className="bg-input border-border text-foreground">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-popover border-border">
               <SelectItem value="all">All Priorities</SelectItem>
               <SelectItem value="high">
                 <div className="flex items-center space-x-2">
@@ -141,11 +141,11 @@ const TaskFilters = ({ filters, onFiltersChange }: TaskFiltersProps) => {
         </div>
 
         {/* Quick Filters */}
-        <div className="space-y-3 pt-2 border-t">
-          <Label className="text-sm font-medium">Quick Filters</Label>
+        <div className="space-y-3 pt-2 border-t border-border">
+          <Label className="text-sm font-medium text-foreground">Quick Filters</Label>
           
           <div className="flex items-center justify-between">
-            <Label htmlFor="due-today" className="text-sm">Due Today</Label>
+            <Label htmlFor="due-today" className="text-sm text-foreground">Due Today</Label>
             <Switch
               id="due-today"
               checked={filters.dueToday}
@@ -154,7 +154,7 @@ const TaskFilters = ({ filters, onFiltersChange }: TaskFiltersProps) => {
           </div>
 
           <div className="flex items-center justify-between">
-            <Label htmlFor="overdue" className="text-sm">Overdue</Label>
+            <Label htmlFor="overdue" className="text-sm text-foreground">Overdue</Label>
             <Switch
               id="overdue"
               checked={filters.overdue}
@@ -165,12 +165,12 @@ const TaskFilters = ({ filters, onFiltersChange }: TaskFiltersProps) => {
 
         {/* Clear Filters */}
         {activeFilterCount > 0 && (
-          <div className="pt-3 border-t">
+          <div className="pt-3 border-t border-border">
             <Button 
               variant="outline" 
               size="sm" 
               onClick={clearAllFilters}
-              className="w-full"
+              className="w-full border-border hover:bg-muted"
             >
               <X className="h-4 w-4 mr-2" />
               Clear All Filters
@@ -179,7 +179,7 @@ const TaskFilters = ({ filters, onFiltersChange }: TaskFiltersProps) => {
         )}
 
         {/* Filter Summary */}
-        <div className="text-xs text-gray-500 pt-2">
+        <div className="text-xs text-muted-foreground pt-2">
           <p>Showing filtered results</p>
           {filters.search && <p>• Search: "{filters.search}"</p>}
           {filters.status !== 'all' && <p>• Status: {filters.status}</p>}

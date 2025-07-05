@@ -32,21 +32,21 @@ const AuthComponent = ({ onLogin }: AuthComponentProps) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background via-background to-red-950/20">
       <div className="w-full max-w-md p-8">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+          <h1 className="text-5xl font-bold text-red-600 mb-2 tracking-tight">
             TaskFlow
           </h1>
-          <p className="text-gray-600">Manage your tasks with ease</p>
+          <p className="text-muted-foreground text-lg">Manage your tasks like a pro</p>
         </div>
 
-        <Card className="shadow-xl border-0 bg-white/80 backdrop-blur-sm">
+        <Card className="shadow-2xl border-border/50 bg-card/95 backdrop-blur-sm">
           <CardHeader className="text-center pb-6">
-            <CardTitle className="text-2xl font-semibold text-gray-900">
+            <CardTitle className="text-2xl font-semibold text-foreground">
               Welcome Back
             </CardTitle>
-            <CardDescription className="text-gray-600">
+            <CardDescription className="text-muted-foreground">
               Sign in to access your task dashboard
             </CardDescription>
           </CardHeader>
@@ -55,12 +55,12 @@ const AuthComponent = ({ onLogin }: AuthComponentProps) => {
             <Button
               onClick={() => handleSocialLogin('google')}
               disabled={isLoading}
-              className="w-full h-12 bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+              className="w-full h-12 bg-card border border-border text-foreground hover:bg-muted disabled:opacity-50"
               variant="outline"
             >
               {loadingProvider === 'google' ? (
                 <div className="flex items-center space-x-2">
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-red-600"></div>
                   <span>Signing in...</span>
                 </div>
               ) : (
@@ -79,11 +79,11 @@ const AuthComponent = ({ onLogin }: AuthComponentProps) => {
             <Button
               onClick={() => handleSocialLogin('github')}
               disabled={isLoading}
-              className="w-full h-12 bg-gray-900 text-white hover:bg-gray-800 disabled:opacity-50"
+              className="w-full h-12 bg-secondary text-secondary-foreground hover:bg-secondary/80 disabled:opacity-50"
             >
               {loadingProvider === 'github' ? (
                 <div className="flex items-center space-x-2">
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-red-600"></div>
                   <span>Signing in...</span>
                 </div>
               ) : (
@@ -99,7 +99,7 @@ const AuthComponent = ({ onLogin }: AuthComponentProps) => {
             <Button
               onClick={() => handleSocialLogin('facebook')}
               disabled={isLoading}
-              className="w-full h-12 bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50"
+              className="w-full h-12 bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
             >
               {loadingProvider === 'facebook' ? (
                 <div className="flex items-center space-x-2">
@@ -118,7 +118,7 @@ const AuthComponent = ({ onLogin }: AuthComponentProps) => {
           </CardContent>
         </Card>
 
-        <p className="text-center text-sm text-gray-500 mt-6">
+        <p className="text-center text-sm text-muted-foreground mt-6">
           By signing in, you agree to our Terms of Service and Privacy Policy
         </p>
       </div>
