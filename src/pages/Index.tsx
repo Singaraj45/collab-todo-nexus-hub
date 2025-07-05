@@ -311,7 +311,7 @@ const Index = () => {
 
             <div className="space-y-4">
               {filteredTasks.length === 0 ? (
-                <Card className="p-8 text-center">
+                <Card className="p-8 text-center animate-fade-in">
                   <CardContent>
                     <p className="text-gray-500 mb-4">No tasks found</p>
                     <Button onClick={() => {
@@ -323,18 +323,28 @@ const Index = () => {
                   </CardContent>
                 </Card>
               ) : (
-                filteredTasks.map(task => (
-                  <TaskCard
-                    key={task.id}
-                    task={task}
-                    onEdit={(task) => {
-                      setEditingTask(task);
-                      setIsTaskFormOpen(true);
-                    }}
-                    onDelete={handleDeleteTask}
-                    onStatusChange={(taskId, status) => handleUpdateTask(taskId, { status })}
-                  />
-                ))
+                <div className="flex flex-col space-y-4">
+                  {filteredTasks.map((task, index) => (
+                    <div
+                      key={task.id}
+                      className="animate-fade-in"
+                      style={{
+                        animationDelay: `${index * 100}ms`,
+                        animationFillMode: 'both'
+                      }}
+                    >
+                      <TaskCard
+                        task={task}
+                        onEdit={(task) => {
+                          setEditingTask(task);
+                          setIsTaskFormOpen(true);
+                        }}
+                        onDelete={handleDeleteTask}
+                        onStatusChange={(taskId, status) => handleUpdateTask(taskId, { status })}
+                      />
+                    </div>
+                  ))}
+                </div>
               )}
             </div>
           </div>
